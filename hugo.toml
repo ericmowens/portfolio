@@ -1,0 +1,261 @@
+baseURL = "https://ericmowens.github.io/portfolio"
+title = "Eric Owens - Portfolio"
+languageCode = "en"
+
+[pagination]
+pagerSize = 3
+
+
+# Exclude footer section from generating list pages (index.html and index.xml)
+[outputs]
+  page = ["HTML"]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+  footer = []
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  author = "authors"
+  series = "series"
+  topic = "topics"
+
+# Explicitly prevent the footer section from generating any output
+[outputFormats.footerSection]
+  # Empty configuration to prevent any output
+
+# Specifically disable generation of these kinds for the footer content
+disableKinds = ["footerSection"]
+
+[module]
+[[module.imports]]
+path = "github.com/zetxek/adritian-free-hugo-theme"
+
+## Base mounts - so your site's assets are available
+[[module.mounts]]
+source = "archetypes"
+target = "archetypes"
+
+[[module.mounts]]
+source = "assets"
+target = "assets"
+
+[[module.mounts]]
+source = "layouts"
+target = "layouts"
+
+[[module.mounts]]
+source = "static"
+target = "static"
+
+# The following mounts are required for the theme to be able to load bootstrap
+# Remember also to copy the theme's `package.json` to your site, and run `npm install`
+[[module.mounts]]
+source = "node_modules/bootstrap/scss"
+target = "assets/scss/bootstrap"
+
+[[module.mounts]]
+source = "node_modules/bootstrap/dist/js"
+target = "assets/js/bootstrap"
+
+[[module.mounts]]
+source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+target = "assets/js/vendor/bootstrap.bundle.min.js"
+
+[[module.mounts]]
+source = "node_modules/bootstrap-print-css/css/bootstrap-print.css"
+target = "assets/css/bootstrap-print.css"
+
+
+[params]
+title = 'Eric Owens - Portfolio'
+description = 'This site contains my professional portfolio and some personal projects as well.'
+images = ['/img/og-img.png']
+themeColor = '#478079'
+
+[params.seo]
+siteName = 'Eric Owens - Portfolio'
+siteDescription = 'This site contains my professional portfolio and some personal projects as well.'
+
+[params.seo.person]
+name = 'Eric Owens'
+url = 'https://ericmowens.github.io/portfolio'
+sameAs = ['https://github.com/ericmowens']
+sections = [
+  "about",
+  "experience",
+  "my-work"
+]
+# If you want to display an image logo in the header, you can add it here
+# logo = '/img/hugo.svg'
+
+homepageExperienceCount = 6
+
+[params.favicons]
+# Optional: provide a different source image for auto-generation
+# source = "icons/favicon.png"
+
+# Optional: override any generated file with a static one
+favicon = "favicon.ico"
+# icon16 = "/icons/icon-16.png"
+# icon32 = "/icons/icon-32.png"
+# appleTouch = "/icons/apple-touch-icon.png"
+# icon192 = "/icons/icon-192.png"
+# icon512 = "/icons/icon-512.png"
+# manifest = "/site.webmanifest"
+
+[params.analytics]
+## Analytics parameters.
+### Supported so far: Vercel (Page Insights, Analytics)
+### And Google (Tag Manager, Analytics)
+
+# controls vercel page insights - disabled by default
+# to enable, just set to true
+vercelPageInsights = false
+vercelAnalytics = false
+
+# google analytics and tag manager. to enable, set "enabled" to true
+# and add the tracking code (UA-something for analytics, GTM-something for tag manager)
+[params.analytics.googleAnalytics]
+code = "UA-XXXXX-Y"
+enabled = false
+[params.analytics.googleTagManager]
+code = "GTM-XXXXX"
+enabled = false
+
+[build]
+writeStats = true
+
+[build.buildStats]
+enabledFor = ["scss"]
+disableClasses = false
+disableIDs = false
+disableTags = false
+enable = true
+
+# Language selector visibility — set to true to hide in that location
+[params.languages.selector.disable]
+footer = true
+header = true
+mobileHeader = true
+
+[languages]
+[languages.en]
+disabled = false
+languageCode = 'en'
+languageDirection = 'ltr'
+languageName = 'English'
+title = 'Eric Owens'
+weight = 0
+
+[languages.en.menus]
+[[languages.en.menus.header]]
+name = "About Me"
+URL = "/"
+weight = 1
+
+[[languages.en.menus.header]]
+name = 'Experience'
+URL = '#experience'
+weight = 2
+
+[[languages.en.menus.header]]
+name = 'My Work'
+URL = '#my-work'
+weight = 3
+
+[[languages.en.menus.footer]]
+name = "About Me"
+URL = "/"
+weight = 1
+
+[[languages.en.menus.footer]]
+name = 'Experience'
+URL = '#experience'
+weight = 2
+
+[[languages.en.menus.footer]]
+name = "My Work"
+URL = "#my-work"
+weight = 3
+
+# Plugins
+[params.plugins]
+
+# CSS Plugins
+[[params.plugins.css]]
+URL = "css/custom.css"
+[[params.plugins.css]]
+URL = "css/adritian-icons.css"
+## Print css
+[[params.plugins.css]]
+URL = "css/bootstrap-print.css"
+
+# JS Plugins
+[[params.plugins.js]]
+URL = "js/rad-animations.js"
+[[params.plugins.js]]
+URL = "js/sticky-header.js"
+[[params.plugins.js]]
+URL = "js/library/fontfaceobserver.js"
+
+# SCSS Plugins
+[[params.plugins.scss]]
+URL = "scss/adritian.scss"
+
+# theme/color style 
+[params.colorTheme]
+
+## the following configuration would disable automatic theme selection
+[params.colorTheme.auto]
+    disable = true
+  [params.colorTheme.forced]
+    theme = "light"
+
+# Color theme selector visibility — set to true to hide in that location
+[params.colorTheme.selector.disable]
+footer = true
+header = true
+mobileHeader = true
+## by default we allow override AND automatic selection
+
+# View Transitions API - enabled by default
+# Set to false to disable the native View Transitions API
+# viewTransitions = false
+
+[params.experience]
+showJobCard = true # Set to false to hide the job card
+
+# Performance optimizations
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    lineNos = false
+    noClasses = false
+    style = "github"
+
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 85
+  anchor = "Smart"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepDefaultAttrVals = true
+      keepWhitespace = false
+    [minify.tdewolff.css]
+      precision = 0
+    [minify.tdewolff.js]
+      precision = 0

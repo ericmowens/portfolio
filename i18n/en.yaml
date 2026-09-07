@@ -1,0 +1,11 @@
+## Footer
+- id: "footer_notice"
+  translation: "© Eric Owens 2026"
+
+## 404 Page
+- id: "404_title"
+  translation: "Page not found"
+- id: "404_description"  
+  translation: "Sorry, but the page you were looking for could not be found."
+- id: "404_button"
+  translation: "Back to homepage"
